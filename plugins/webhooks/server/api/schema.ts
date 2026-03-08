@@ -3,7 +3,7 @@ import { z } from "zod";
 export const WebhookSubscriptionsCreateSchema = z.object({
   body: z.object({
     name: z.string(),
-    url: z.url(),
+    url: z.url({ protocol: /^https?$/ }),
     secret: z.string().optional(),
     events: z.array(z.string()),
   }),
@@ -17,7 +17,7 @@ export const WebhookSubscriptionsUpdateSchema = z.object({
   body: z.object({
     id: z.uuid(),
     name: z.string(),
-    url: z.url(),
+    url: z.url({ protocol: /^https?$/ }),
     secret: z.string().optional(),
     events: z.array(z.string()),
   }),

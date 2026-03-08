@@ -760,6 +760,7 @@ export default class DeliverWebhookTask extends BaseTask<Props> {
         body: JSON.stringify(requestBody),
         redirect: "error",
         timeout: 5000,
+        allowPrivateIPAddress: !env.isCloudHosted,
       });
       status = response.ok ? "success" : "failed";
     } catch (err) {
